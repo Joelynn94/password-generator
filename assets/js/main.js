@@ -3,12 +3,14 @@
 // Validate user input and ensure that at least one character type is selected.
 // Once all prompts are answered, the user will be presented with a password matching the answered prompts. Displaying the generated password in an alert is acceptable, but attempt to write the password to the page instead.
 
-// Create arrays to pull from
+// Create strings to pull from
 var lowerCharacters = "abcdefghijklmnopqrstuvwxyz";
 var upperCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numericCharacters = "0123456789";
 var specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{}~";
 
+// Combined strings 
+var combinedCharacters = lowerCharacters + upperCharacters + numericCharacters + specialCharacters;
 
 // Generate random letters 
 function randomLetter (list) {
@@ -16,17 +18,23 @@ function randomLetter (list) {
     return letter;
 }
 
-
 // Loop through array 
 function generate (arr) {
-    var password = "";
+    var password = " ";
     for(var i = 0; i < 7; i++) {
         password += randomLetter(arr);
     }
     console.log(password)
+    return password;
 }
 
-generate(lowerCharacters);
-generate(upperCharacters);
-generate(numericCharacters);
-generate(specialCharacters);
+// Grab reference to button ID
+var target = document.getElementById('target');
+// Grab reference to textarea ID 
+var box = document.getElementById('passTextBox');
+
+// Fire an on click event when the button is clicked and set the textContent to the generated password
+target.onclick = function(){
+    var pass = generate(combinedCharacters);
+    box.textContent = pass;
+}
