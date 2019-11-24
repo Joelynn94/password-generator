@@ -12,6 +12,16 @@ var specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{}~";
 // Combined strings 
 var combinedCharacters = lowerCharacters + upperCharacters + numericCharacters + specialCharacters;
 
+// // Create user-slected criteria
+var userInput = prompt('How many characters would you like your password to contain?');
+// confirm boxes
+var lowercase = confirm('Click OK to confirm using lowercase characters');
+var uppercase = confirm('Click OK to confirm using uppercase characters');
+var numbers = confirm('Click OK to confirm using numbers');
+var special = confirm('Click OK to confirm using special characters');
+
+
+
 // Generate random letters 
 function randomLetter (list) {
     let letter = list[Math.floor(Math.random() * list.length)];
@@ -21,20 +31,23 @@ function randomLetter (list) {
 // Loop through array 
 function generate (arr) {
     var password = " ";
-    for(var i = 0; i < 7; i++) {
+    for(var i = 0; i < userInput; i++) {
         password += randomLetter(arr);
     }
-    console.log(password)
     return password;
 }
 
-// Grab reference to button ID
-var target = document.getElementById('target');
 // Grab reference to textarea ID 
 var box = document.getElementById('passTextBox');
 
 // Fire an on click event when the button is clicked and set the textContent to the generated password
-target.onclick = function(){
+generateBtn.onclick = function(){
     var pass = generate(combinedCharacters);
     box.textContent = pass;
 }
+
+// Copy to clipboard event
+document.querySelector('#copyBtn').addEventListener('click', function () {
+    document.querySelector('#passTextBox').select();
+    document.execCommand('copy');
+  });
