@@ -12,15 +12,13 @@ var specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{}~";
 // Combined strings 
 var combinedCharacters = lowerCharacters + upperCharacters + numericCharacters + specialCharacters;
 
-// // Create user-slected criteria
+// Create user-slected criteria
 var userInput = prompt('How many characters would you like your password to contain?');
 // confirm boxes
 var lowercase = confirm('Click OK to confirm using lowercase characters');
 var uppercase = confirm('Click OK to confirm using uppercase characters');
 var numbers = confirm('Click OK to confirm using numbers');
 var special = confirm('Click OK to confirm using special characters');
-
-
 
 // Generate random letters 
 function randomLetter (list) {
