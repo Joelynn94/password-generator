@@ -1,7 +1,7 @@
-// The user will be prompted to choose from the following password criteria
-// Length (must be between 8 and 128 characters)
-// Validate user input and ensure that at least one character type is selected.
-// Once all prompts are answered, the user will be presented with a password matching the answered prompts. Displaying the generated password in an alert is acceptable, but attempt to write the password to the page instead.
+// // The user will be prompted to choose from the following password criteria
+// // Length (must be between 8 and 128 characters)
+// // Validate user input and ensure that at least one character type is selected.
+// // Once all prompts are answered, the user will be presented with a password matching the answered prompts. Displaying the generated password in an alert is acceptable, but attempt to write the password to the page instead.
 
 // Create strings to pull from
 var lowerCharacters = "abcdefghijklmnopqrstuvwxyz";
@@ -10,24 +10,77 @@ var numericCharacters = "0123456789";
 var specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{}~";
 
 // Combined strings 
-var combinedCharacters = lowerCharacters + upperCharacters + numericCharacters + specialCharacters;
+var combinedCharacters = [];
+
 
 // Create user-slected criteria
-var userInput = prompt('How many characters would you like your password to contain?');
+var userInput = parseInt(prompt(
+    "How many characters would you like your password to contain?"
+    ));
+
+
 // confirm boxes
 var lowercase = confirm('Click OK to confirm using lowercase characters');
 var uppercase = confirm('Click OK to confirm using uppercase characters');
 var numbers = confirm('Click OK to confirm using numbers');
 var special = confirm('Click OK to confirm using special characters');
 
-// Generate random letters 
-function randomLetter (list) {
-    let letter = list[Math.floor(Math.random() * list.length)];
+
+function userLength(){
+
+    // Conditional statement to check if password length is a number. Prompts end if this evaluates false
+    if (isNaN(userInput) === true) {
+        alert("Password length must be provided as a number");
+        return;
+    }
+
+    // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
+    if (userInput < 8) {
+        alert("Password length must be at least 8 characters");
+        return;
+    }
+
+    // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
+    if (userInput > 128) {
+        alert("Password length must less than 129 characters");
+        return;
+    }
+
+    if (lowercase){
+        combinedCharacters += lowerCharacters;
+    }
+    if (uppercase){
+        combinedCharacters += upperCharacters;
+    }
+    if (numbers){
+        combinedCharacters += numericCharacters;
+    }
+    if (special){
+        combinedCharacters += specialCharacters;
+    }
+
+      // Conditional statement to check if user does not include any types of characters. Password generator ends if all four variables evaluate to false
+    if (
+        lowerCharacters === false &&
+        upperCharacters === false &&
+        numericCharacters === false &&
+        specialCharacters === false
+    ) {
+        alert("Must select at least one character type");
+        return;
+    }
+
+}
+
+// Generate random letters from array
+function randomLetter (arr) {
+    let letter = arr[Math.floor(Math.random() * arr.length)];
     return letter;
 }
 
 // Loop through array 
 function generate (arr) {
+    userLength();
     var password = " ";
     for(var i = 0; i < userInput; i++) {
         password += randomLetter(arr);
@@ -49,3 +102,9 @@ document.querySelector('#copyBtn').addEventListener('click', function () {
     document.querySelector('#passTextBox').select();
     document.execCommand('copy');
   });
+
+
+// started with declaring arrays to pull information from 
+// build the function to prompt user for input 
+    // prompt 
+  
