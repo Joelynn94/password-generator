@@ -20,7 +20,7 @@ Lowercase characters
 
 Uppercase characters
 
-#Depoyed Application Link: 
+# Deployed Application Link: 
 https://joelynn94.github.io/password-generator/
 
 
