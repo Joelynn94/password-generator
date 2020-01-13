@@ -20,7 +20,8 @@ Lowercase characters
 
 Uppercase characters
 
-
+#Depoyed Application Link: 
+https://joelynn94.github.io/password-generator/
 
 
 The application should validate user input and ensure that at least one character type is selected.
