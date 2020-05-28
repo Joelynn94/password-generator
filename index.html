@@ -18,11 +18,6 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body class="bg-light">
-    <!-- Heading -->
-    <div>
-      <h1 class="main-heading">Password Generator</h1>
-    </div>
-
     <main>
       <!-- Container for application -->
       <div class="container">
@@ -69,11 +64,18 @@
 
         <!-- Password Options -->
         <section class="password-generator_options">
-          <form id="password-generator_options-form">
-            <h3>Customize your password</h3>
+          <h3 class="password-generator_options-heading">
+            Customize your password
+          </h3>
+          <form
+            class="password-generator_options-form"
+            id="password-generator_options-form"
+          >
             <!-- Password Range/Number -->
             <div class="password-generator_range-wrapper">
-              <label for="password-generator_range-number"
+              <label
+                for="password-generator_range-number"
+                class="password-generator_range-label"
                 >Password Length</label
               >
               <input
@@ -81,6 +83,7 @@
                 value="12"
                 min="1"
                 max="128"
+                class="password-generator_range-number"
                 id="password-generator_range-number"
               />
               <input
@@ -94,39 +97,60 @@
             </div>
             <!-- Password Checkboxes -->
             <div class="password-generator_checkbox-wrapper">
-              <!-- Uppercase Checkbox -->
-              <label for="password-generator_checkbox-uppercase"
-                >Uppercase</label
-              >
-              <input
-                type="checkbox"
-                name="uppercase"
-                id="password-generator_checkbox-uppercase"
-              />
-              <!-- Lowercase Checkbox -->
-              <label for="password-generator_checkbox-uppercase"
-                >Lowercase</label
-              >
-              <input
-                type="checkbox"
-                name="lowercase"
-                id="password-generator_checkbox-lowercase"
-              />
-              <!-- Numbers Checkbox -->
-              <label for="password-generator_checkbox-uppercase">Numbers</label>
-              <input
-                type="checkbox"
-                name="numbers"
-                id="password-generator_checkbox-numbers"
-              />
-              <!-- Symbols Checkbox -->
-              <label for="password-generator_checkbox-uppercase">Symbols</label>
-              <input
-                type="checkbox"
-                name="symbols"
-                id="password-generator_checkbox-symbols"
-              />
+              <div class="checkbox-container">
+                <!-- Uppercase Checkbox -->
+                <label for="password-generator_checkbox-uppercase"
+                  >Uppercase</label
+                >
+                <input
+                  type="checkbox"
+                  name="uppercase"
+                  id="password-generator_checkbox-uppercase"
+                />
+              </div>
+
+              <div class="checkbox-container">
+                <!-- Lowercase Checkbox -->
+                <label for="password-generator_checkbox-uppercase"
+                  >Lowercase</label
+                >
+                <input
+                  type="checkbox"
+                  name="lowercase"
+                  id="password-generator_checkbox-lowercase"
+                />
+              </div>
+
+              <div class="checkbox-container">
+                <!-- Numbers Checkbox -->
+                <label for="password-generator_checkbox-uppercase"
+                  >Numbers</label
+                >
+                <input
+                  type="checkbox"
+                  name="numbers"
+                  id="password-generator_checkbox-numbers"
+                />
+              </div>
+
+              <div class="checkbox-container">
+                <!-- Symbols Checkbox -->
+                <label for="password-generator_checkbox-uppercase"
+                  >Symbols</label
+                >
+                <input
+                  type="checkbox"
+                  name="symbols"
+                  id="password-generator_checkbox-symbols"
+                />
+              </div>
             </div>
+          </form>
+        </section>
+
+        <section class="password-generator_btn">
+          <form>
+            <button class="password-generator_copy-btn">Copy Password</button>
           </form>
         </section>
       </div>
