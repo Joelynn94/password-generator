@@ -202,8 +202,43 @@ body {
 .password-generator_range-wrapper {
   display: block;
   /* width: 50%; */
-  padding-right: 40px;
   margin-bottom: 1.5rem;
+}
+
+.range-slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 68%;
+  background: #d3d3d3; /* Grey background */
+  border-radius: 5px;
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  height: 0.75rem; /* Specified height */
+}
+
+/* Mouse-over effects */
+.range-slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  border-radius: 50%;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #ff554f; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.range-slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #ff554f; /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }
 
 .password-generator_range-label {
@@ -214,10 +249,13 @@ body {
   font-weight: bold;
 }
 
-.password-generator_range-number {
+.range-number {
+  width: 12%;
+  max-width: 80px;
+  min-width: 50px;
   text-align: center;
-  margin-right: 20px;
-  padding: 10px;
+  margin-right: 1.25rem;
+  padding: 1rem 0;
   border: 1px solid #c8c8c8;
   border-radius: 5px;
   background-color: #fff;
