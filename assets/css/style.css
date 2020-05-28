@@ -152,10 +152,10 @@ body {
   width: 10%;
   background-color: rgb(241, 155, 43);
   /* width: 40%;
-  background-color: rgb(216, 209, 69);
-  width: 60%;
-  background-color: rgb(152, 203, 111);
-  width: 80%;
+  background-color: rgb(216, 209, 69); */
+  /* width: 60%;
+  background-color: rgb(152, 203, 111); */
+  /* width: 80%;
   background-color: rgb(95, 216, 137); */
 }
 
@@ -284,6 +284,17 @@ body {
   padding: 1rem;
   font-size: 1rem;
   background: #ff554f;
+  color: #fff;
+}
+
+.password-generator_generate-btn {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 0;
+  outline: none;
+  padding: 1rem;
+  font-size: 1rem;
+  background: #c02c26;
   color: #fff;
 }
 
