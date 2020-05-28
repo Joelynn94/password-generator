@@ -1,49 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body class="bg-light">
-
-    <div class="row py-3">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h1 class="text-center display-4 text-dark">Password Generator</h1>
-        </div>
+    <!-- <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    /> -->
+    <script
+      src="https://kit.fontawesome.com/afb09f7670.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="bg-light">
+    <!-- Heading -->
+    <div>
+      <h1 class="main-heading">Password Generator</h1>
     </div>
 
     <main>
-        <div class="container main-content pt-5 px-4">
-            <div class="row pd-3">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h2 class="text-left text-muted">Generate a password</h2>
-                </div>
+      <!-- Container for application -->
+      <div class="container">
+        <!-- Intro Section -->
+        <section class="intro">
+          <div class="intro-hero">
+            <span class="intro-span">Password Generator Tool</span>
+            <h1 class="intro-heading">Generate a secure password</h1>
+            <div class="intro-copy">
+              <h4 class="intro-copy_text">
+                Use this online password generator to create a secure, random
+                password.
+              </h4>
             </div>
-            <div class="row py-3">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <form class="py-3">
-                        <div class="form-group">
-                            <textarea id="passTextBox" class="form-control" placeholder="Your Secure Password"></textarea>
-                        </div>
-                    </form>
+          </div>
+        </section>
 
-                    <div class="row py-4">
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
-                            <button type="submit" id="generateBtn" class="btn btn-danger px-5">Generate Password</button>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
-                            <button type="button" id="copyBtn" class="btn btn-secondary px-5">Copy to Clipboard</button>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-        </div>
-    </main>   
+        <!-- Password Generator Section -->
+        <section class="password-generator_display">
+          <!-- Password Display -->
+          <div class="display-password">
+            <form id="password-generator_display-form">
+              <input
+                type="text"
+                id="generated-password"
+                class="password-generator_input"
+                spellcheck="false"
+              />
+            </form>
+            <div class="password-generator_icons">
+              <button class="password-generator_copy">
+                <i class="fal fa-copy"></i>
+              </button>
+              <button class="password-generator_generate">
+                <i class="fal fa-sync"></i>
+              </button>
+            </div>
+            <!-- Password Strength Bar -->
+            <div class="password-generator_strength-wrapper">
+              <div class="password-generator_strength"></div>
+            </div>
+          </div>
+        </section>
 
-    <script src="assets/js/main.js"></script>
-</body>
+        <!-- Password Options -->
+        <section class="password-generator_options">
+          <form id="password-generator_options-form">
+            <h3>Customize your password</h3>
+            <!-- Password Range/Number -->
+            <div class="password-generator_range-wrapper">
+              <label for="password-generator_range-number"
+                >Password Length</label
+              >
+              <input
+                type="number"
+                value="12"
+                min="1"
+                max="128"
+                id="password-generator_range-number"
+              />
+              <input
+                type="range"
+                min="1"
+                max="128"
+                value="50"
+                class="slider"
+                id="password-generator_range-slider"
+              />
+            </div>
+            <!-- Password Checkboxes -->
+            <div class="password-generator_checkbox-wrapper">
+              <!-- Uppercase Checkbox -->
+              <label for="password-generator_checkbox-uppercase"
+                >Uppercase</label
+              >
+              <input
+                type="checkbox"
+                name="uppercase"
+                id="password-generator_checkbox-uppercase"
+              />
+              <!-- Lowercase Checkbox -->
+              <label for="password-generator_checkbox-uppercase"
+                >Lowercase</label
+              >
+              <input
+                type="checkbox"
+                name="lowercase"
+                id="password-generator_checkbox-lowercase"
+              />
+              <!-- Numbers Checkbox -->
+              <label for="password-generator_checkbox-uppercase">Numbers</label>
+              <input
+                type="checkbox"
+                name="numbers"
+                id="password-generator_checkbox-numbers"
+              />
+              <!-- Symbols Checkbox -->
+              <label for="password-generator_checkbox-uppercase">Symbols</label>
+              <input
+                type="checkbox"
+                name="symbols"
+                id="password-generator_checkbox-symbols"
+              />
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+  </body>
 </html>
