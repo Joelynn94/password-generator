@@ -38,11 +38,11 @@
         <!-- Password Generator Section -->
         <section class="password-generator_display">
           <!-- Password Display -->
-          <div class="display-password">
+          <div class="password-display">
             <form id="password-generator_display-form">
               <input
                 type="text"
-                id="generated-password"
+                id="password-display"
                 class="password-generator_input"
                 spellcheck="false"
               />
@@ -67,10 +67,7 @@
           <h3 class="password-generator_options-heading">
             Customize your password
           </h3>
-          <form
-            class="password-generator_options-form"
-            id="password-generator_options-form"
-          >
+          <form class="password-generator_options-form" id="options-form">
             <!-- Password Range/Number -->
             <div class="password-generator_range-wrapper">
               <label
@@ -84,7 +81,7 @@
                 min="1"
                 max="128"
                 class="range-number"
-                id="password-generator_range-number"
+                id="range-number"
               />
               <input
                 type="range"
@@ -92,7 +89,7 @@
                 max="128"
                 value="50"
                 class="range-slider"
-                id="password-generator_range-slider"
+                id="range-slider"
               />
             </div>
             <!-- Password Checkboxes -->
@@ -105,32 +102,24 @@
                 <input
                   type="checkbox"
                   name="uppercase"
-                  id="password-generator_checkbox-uppercase"
+                  id="checkbox-uppercase"
                 />
               </div>
 
               <div class="checkbox-container">
                 <!-- Lowercase Checkbox -->
-                <label for="password-generator_checkbox-uppercase"
-                  >Lowercase</label
-                >
+                <label for="checkbox-uppercase">Lowercase</label>
                 <input
                   type="checkbox"
                   name="lowercase"
-                  id="password-generator_checkbox-lowercase"
+                  id="checkbox-lowercase"
                 />
               </div>
 
               <div class="checkbox-container">
                 <!-- Numbers Checkbox -->
-                <label for="password-generator_checkbox-uppercase"
-                  >Numbers</label
-                >
-                <input
-                  type="checkbox"
-                  name="numbers"
-                  id="password-generator_checkbox-numbers"
-                />
+                <label for="checkbox-uppercase">Numbers</label>
+                <input type="checkbox" name="numbers" id="checkbox-numbers" />
               </div>
 
               <div class="checkbox-container">
@@ -138,11 +127,7 @@
                 <label for="password-generator_checkbox-uppercase"
                   >Symbols</label
                 >
-                <input
-                  type="checkbox"
-                  name="symbols"
-                  id="password-generator_checkbox-symbols"
-                />
+                <input type="checkbox" name="symbols" id="checkbox-symbols" />
               </div>
             </div>
           </form>
@@ -155,5 +140,7 @@
         </section>
       </div>
     </main>
+
+    <script src="assets/js/app.js"></script>
   </body>
 </html>
