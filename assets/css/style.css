@@ -203,12 +203,35 @@ body {
   text-align: left;
 }
 
+.info-toast {
+  display: none;
+  position: relative;
+  background-color: #e1f5fe;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.toast-message {
+  padding: 1rem;
+}
+
+.toast-close {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+}
+
+.toast-message > h4 {
+  margin-bottom: 0.25rem;
+}
+
 .password-generator_options-heading {
   margin-left: 1rem;
   margin-right: 1rem;
   font-size: 1.5rem;
   text-align: left;
-  margin-bottom: 26px;
+  margin-bottom: 0.5rem;
   border-bottom: 2px solid #f5f7f8;
   padding: 1rem 0;
 }
@@ -286,11 +309,17 @@ body {
   margin-bottom: 1rem;
 }
 
+.password-generator_buttons {
+  text-align: center;
+}
+
 .password-generator_btn {
   margin: 2rem;
 }
 
 .password-generator_copy-btn {
+  width: 100%;
+  margin-bottom: 1rem;
   cursor: pointer;
   border-radius: 5px;
   border: 0;
@@ -302,6 +331,7 @@ body {
 }
 
 .password-generator_generate-btn {
+  width: 100%;
   cursor: pointer;
   border-radius: 5px;
   border: 0;
@@ -310,6 +340,31 @@ body {
   font-size: 1rem;
   background: #c02c26;
   color: #fff;
+}
+
+@media only screen and (min-width: 500px) {
+  .password-generator_buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+
+  .password-generator_generate-btn {
+    max-width: 200px;
+  }
+
+  .password-generator_copy-btn {
+    max-width: 200px;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 690px) {
+  .password-generator_buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: start;
+  }
 }
 
 /* form {

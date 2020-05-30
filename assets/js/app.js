@@ -19,6 +19,8 @@ const copy = document.getElementById("copy");
 const generate = document.getElementById("generate");
 const copyButton = document.getElementById("copy-btn");
 const generateButton = document.getElementById("generate-btn");
+// Alerts/toasts
+const toastMessage = document.querySelector(".info-toast");
 
 // Array of special characters to be included in password
 const specialCharacters = [
@@ -120,6 +122,27 @@ function syncCharacters(event) {
   sliderNumber.value = value;
 }
 
+// function to set the interval of the toast message
+function infoToastMessage() {
+  // how many seconds to display
+  let secondsLeft = 5;
+  // interval function set to messageTime
+  const messageTime = setInterval(function () {
+    // display the div
+    toastMessage.style.display = "block";
+    // decrease the secondsLeft every second
+    secondsLeft--;
+
+    // when the timer reaches zero
+    if (secondsLeft == 0) {
+      // hide the div
+      toastMessage.style.display = "none";
+      // clear the interval
+      clearInterval(messageTime);
+    }
+  }, 1000);
+}
+
 function getPasswordOptions() {
   // check to see password options
   // check the character amount
@@ -149,6 +172,7 @@ function getPasswordOptions() {
     hasNumber == false &&
     hasSymbols == false
   ) {
+    infoToastMessage();
     return;
   }
 

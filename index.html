@@ -73,6 +73,19 @@
           <form class="password-generator_options-form" id="options-form">
             <!-- Password Range/Number -->
             <div class="password-generator_range-wrapper">
+              <!-- Info toast -->
+              <div class="info-toast">
+                <div class="toast-message">
+                  <h4>Options Require</h4>
+                  <p>
+                    You must select at least one option to generate a password
+                  </p>
+                  <div class="toast-close">
+                    <i class="fal fa-times"></i>
+                  </div>
+                </div>
+              </div>
+
               <label
                 for="password-generator_range-number"
                 class="password-generator_range-label"
@@ -146,17 +159,15 @@
               </div>
             </div>
 
-            <button class="password-generator_copy-btn" id="copy-btn">
-              Copy Password
-            </button>
-            <button class="password-generator_generate-btn" id="generate-btn">
-              Generate Password
-            </button>
+            <div class="password-generator_buttons">
+              <button class="password-generator_copy-btn" id="copy-btn">
+                Copy Password
+              </button>
+              <button class="password-generator_generate-btn" id="generate-btn">
+                Generate Password
+              </button>
+            </div>
           </form>
-        </section>
-
-        <section class="password-generator_btn">
-          <form></form>
         </section>
       </div>
     </main>
