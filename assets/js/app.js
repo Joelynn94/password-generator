@@ -19,6 +19,7 @@ const copy = document.getElementById("copy");
 const generate = document.getElementById("generate");
 const copyButton = document.getElementById("copy-btn");
 const generateButton = document.getElementById("generate-btn");
+const closeButton = document.getElementById("close");
 // Alerts/toasts
 const toastMessage = document.querySelector(".info-toast");
 
@@ -128,18 +129,26 @@ function infoToastMessage() {
   let secondsLeft = 5;
   // interval function set to messageTime
   const messageTime = setInterval(function () {
-    // display the div
+    // display the toast message div
     toastMessage.style.display = "block";
     // decrease the secondsLeft every second
     secondsLeft--;
 
     // when the timer reaches zero
     if (secondsLeft == 0) {
-      // hide the div
+      // hide the toast message div
       toastMessage.style.display = "none";
       // clear the interval
       clearInterval(messageTime);
     }
+
+    // listen to the close button being clicked
+    closeButton.addEventListener("click", () => {
+      // set the toast message div to display none
+      toastMessage.style.display = "none";
+      // and clear the interval
+      clearInterval(messageTime);
+    });
   }, 1000);
 }
 

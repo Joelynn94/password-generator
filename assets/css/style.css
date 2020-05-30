@@ -93,6 +93,10 @@ body {
   transform: translateY(-50%);
 }
 
+.password-generator_input:focus {
+  border: 2px solid #ff554f !important;
+}
+
 .password-display {
   display: flex;
   margin: 0 auto;
@@ -114,6 +118,10 @@ body {
 
 .fal {
   font-size: 1.5rem;
+}
+
+.fa-times {
+  cursor: pointer;
 }
 
 .password-generator_copy,
