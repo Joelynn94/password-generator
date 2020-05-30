@@ -5,6 +5,7 @@
 const slider = document.getElementById("range-slider");
 const sliderNumber = document.getElementById("range-number");
 const passwordDisplay = document.getElementById("password-display");
+const passwordStrength = document.getElementById("passwordStrength");
 // Forms
 const optionsForm = document.getElementById("options-form");
 const displayForm = document.getElementById("display-form");
@@ -141,6 +142,7 @@ function getPasswordOptions() {
     hasSymbols
   );
 
+  // if no options are sleected - return
   if (
     hasUppercase == false &&
     hasLowercase == false &&
@@ -149,6 +151,33 @@ function getPasswordOptions() {
   ) {
     return;
   }
+
+  // toggle weak class is the password length is greater than 3
+  // and less than or equal to 7
+  passwordStrength.classList.toggle(
+    "password-strength-weak",
+    characterAmount <= 7 && characterAmount > 3
+  );
+
+  // toggle okay class is the password length is greater than or equal to 8
+  // and less than or equal to 11
+  passwordStrength.classList.toggle(
+    "password-strength-okay",
+    characterAmount >= 8 && characterAmount <= 11
+  );
+
+  // toggle good class is the password length is greater than or equal to 12
+  // and less than or equal to 15
+  passwordStrength.classList.toggle(
+    "password-strength-good",
+    characterAmount >= 12 && characterAmount <= 15
+  );
+
+  // toggle great class is the password length is greater than or equal to 16
+  passwordStrength.classList.toggle(
+    "password-strength-great",
+    characterAmount >= 16
+  );
 
   // Object to store the user input
   const passwordOptions = {

@@ -151,12 +151,26 @@ body {
   transition: width 0.63s;
   width: 10%;
   background-color: rgb(241, 155, 43);
-  /* width: 40%;
-  background-color: rgb(216, 209, 69); */
-  /* width: 60%;
-  background-color: rgb(152, 203, 111); */
-  /* width: 80%;
-  background-color: rgb(95, 216, 137); */
+}
+
+.password-strength-weak {
+  width: 40%;
+  background-color: rgb(216, 209, 69);
+}
+
+.password-strength-okay {
+  width: 60%;
+  background-color: rgb(152, 203, 111);
+}
+
+.password-strength-good {
+  width: 80%;
+  background-color: rgb(95, 216, 137);
+}
+
+.password-strength-great {
+  width: 100%;
+  background-color: rgb(47, 218, 107);
 }
 
 /* Password Options */

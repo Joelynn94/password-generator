@@ -57,7 +57,10 @@
             </div>
             <!-- Password Strength Bar -->
             <div class="password-generator_strength-wrapper">
-              <div class="password-generator_strength"></div>
+              <div
+                class="password-generator_strength"
+                id="passwordStrength"
+              ></div>
             </div>
           </div>
         </section>
@@ -87,7 +90,7 @@
                 type="range"
                 min="1"
                 max="128"
-                value="50"
+                value="12"
                 class="range-slider"
                 id="range-slider"
               />
@@ -103,6 +106,7 @@
                   type="checkbox"
                   name="uppercase"
                   id="checkbox-uppercase"
+                  checked
                 />
               </div>
 
@@ -113,13 +117,19 @@
                   type="checkbox"
                   name="lowercase"
                   id="checkbox-lowercase"
+                  checked
                 />
               </div>
 
               <div class="checkbox-container">
                 <!-- Numbers Checkbox -->
                 <label for="checkbox-uppercase">Numbers</label>
-                <input type="checkbox" name="numbers" id="checkbox-numbers" />
+                <input
+                  type="checkbox"
+                  name="numbers"
+                  id="checkbox-numbers"
+                  checked
+                />
               </div>
 
               <div class="checkbox-container">
@@ -127,7 +137,12 @@
                 <label for="password-generator_checkbox-uppercase"
                   >Symbols</label
                 >
-                <input type="checkbox" name="symbols" id="checkbox-symbols" />
+                <input
+                  type="checkbox"
+                  name="symbols"
+                  id="checkbox-symbols"
+                  checked
+                />
               </div>
             </div>
 
