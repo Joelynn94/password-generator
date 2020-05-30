@@ -39,7 +39,7 @@
         <section class="password-generator_display">
           <!-- Password Display -->
           <div class="password-display">
-            <form id="password-generator_display-form">
+            <form id="display-form">
               <input
                 type="text"
                 id="password-display"
@@ -48,10 +48,10 @@
               />
             </form>
             <div class="password-generator_icons">
-              <button class="password-generator_copy">
+              <button class="password-generator_copy" id="copy">
                 <i class="fal fa-copy"></i>
               </button>
-              <button class="password-generator_generate">
+              <button class="password-generator_generate" id="generate">
                 <i class="fal fa-sync"></i>
               </button>
             </div>
@@ -130,16 +130,18 @@
                 <input type="checkbox" name="symbols" id="checkbox-symbols" />
               </div>
             </div>
+
+            <button class="password-generator_copy-btn" id="copy-btn">
+              Copy Password
+            </button>
+            <button class="password-generator_generate-btn" id="generate-btn">
+              Generate Password
+            </button>
           </form>
         </section>
 
         <section class="password-generator_btn">
-          <form>
-            <button class="password-generator_copy-btn">Copy Password</button>
-            <button class="password-generator_generate-btn">
-              Generate Password
-            </button>
-          </form>
+          <form></form>
         </section>
       </div>
     </main>

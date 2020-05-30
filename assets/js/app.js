@@ -1,126 +1,267 @@
-// // The user will be prompted to choose from the following password criteria
-// // Length (must be between 8 and 128 characters)
-// // Validate user input and ensure that at least one character type is selected.
-// // Once all prompts are answered, the user will be presented with a password matching the answered prompts. Displaying the generated password in an alert is acceptable, but attempt to write the password to the page instead.
+// Validate user input and ensure that at least one character type is selected.
+// Once all prompts are answered, the user will be presented with a password matching the answered prompts. Displaying the generated password in an alert is acceptable, but attempt to write the password to the page instead.
 
-// Create strings to pull from
-var lowerCharacters = "abcdefghijklmnopqrstuvwxyz";
-var upperCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numericCharacters = "0123456789";
-var specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{}~";
-
-// Combined strings
-var combinedCharacters = [];
-
+// DOM Elements
 const slider = document.getElementById("range-slider");
 const sliderNumber = document.getElementById("range-number");
+const passwordDisplay = document.getElementById("password-display");
+// Forms
 const optionsForm = document.getElementById("options-form");
+const displayForm = document.getElementById("display-form");
+// Checkboxes
+const checkboxUppercase = document.getElementById("checkbox-uppercase");
+const checkboxLowercase = document.getElementById("checkbox-lowercase");
+const checkboxNumbers = document.getElementById("checkbox-numbers");
+const checkboxSymbols = document.getElementById("checkbox-symbols");
+// Buttons
+const copy = document.getElementById("copy");
+const generate = document.getElementById("generate");
+const copyButton = document.getElementById("copy-btn");
+const generateButton = document.getElementById("generate-btn");
+
+// Array of special characters to be included in password
+const specialCharacters = [
+  "@",
+  "%",
+  "+",
+  "\\",
+  "/",
+  "'",
+  "!",
+  "#",
+  "$",
+  "^",
+  "?",
+  ":",
+  ",",
+  ")",
+  "(",
+  "}",
+  "{",
+  "]",
+  "[",
+  "~",
+  "-",
+  "_",
+  ".",
+];
+
+// Array of numeric characters to be included in password
+const numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+// Array of lowercase characters to be included in password
+const lowerCasedCharacters = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+
+// Array of uppercase characters to be included in password
+const upperCasedCharacters = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+
+let hasUppercase = checkboxUppercase.checked;
+hasUppercase = true;
+
+// sync the range slider and number values together
+function syncCharacters(event) {
+  // set the value to get the event.target.value that was dispatched
+  const value = event.target.value;
+  // set the slider value to the event
+  slider.value = value;
+  // set the slider number to the value of the event
+  sliderNumber.value = value;
+}
+
+function getPasswordOptions() {
+  // check to see password options
+  // check the character amount
+  let characterAmount = +sliderNumber.value;
+  console.log(typeof characterAmount);
+  // check if uppercase was checked (true or false)
+  let hasUppercase = checkboxUppercase.checked;
+  // check if lowercase was checked (true or false)
+  let hasLowercase = checkboxLowercase.checked;
+  // check if numbers was checked (true or false)
+  let hasNumber = checkboxNumbers.checked;
+  // check if symbols was checked (true or false)
+  let hasSymbols = checkboxSymbols.checked;
+
+  console.log(
+    characterAmount,
+    hasUppercase,
+    hasLowercase,
+    hasNumber,
+    hasSymbols
+  );
+
+  hasUppercase = true;
+
+  if (
+    hasUppercase == false &&
+    hasLowercase == false &&
+    hasNumber == false &&
+    hasSymbols == false
+  ) {
+    return;
+  }
+
+  // Object to store the user input
+  const passwordOptions = {
+    characterAmount,
+    hasUppercase,
+    hasLowercase,
+    hasNumber,
+    hasSymbols,
+  };
+
+  return passwordOptions;
+}
+
+// function for getting randon characters
+function getRandomCharacters(array) {
+  // get a random index
+  const randomIndex = Math.floor(Math.random() * array.length);
+  // grabd the random character
+  const randomCharacter = array[randomIndex];
+
+  return randomCharacter;
+}
+
+function generatePassword() {
+  // calling the getPasswordOptions function to get the passwordOptions object
+  const options = getPasswordOptions();
+
+  // variable to store password as it's being concatenated
+  let result = [];
+
+  // Array to store types of characters to include in password
+  let possibleCharacters = [];
+
+  // Conditional statement that adds array of uppercase characters into array of possible characters based on user input
+  if (options.hasUppercase) {
+    // Return a new array based on the merging of possibleCharacters and uppCasedCharacters
+    possibleCharacters = possibleCharacters.concat(upperCasedCharacters);
+  }
+
+  // Conditional statement that adds array of lowercase characters into array of possible characters based on user input
+  if (options.hasLowercase) {
+    // Return a new array based on the merging of possibleCharacters and lowerCasedCharacters
+    possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
+  }
+
+  // Conditional statement that adds array of number characters into array of possible characters based on user input
+  if (options.hasNumber) {
+    // Return a new array based on the merging of possibleCharacters and numericCharacters
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
+  }
+
+  // Conditional statement that adds array of symbol characters into array of possible characters based on user input
+  if (options.hasSymbols) {
+    // Return a new array based on the merging of possibleCharacters and specialCharacters
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
+  }
+
+  // For loop to iterate over the password length from the options object, selecting random indices from the array of possible characters and concatenating those characters into the password variable
+  for (let i = 0; i < options.characterAmount; i++) {
+    const possibleCharacter = getRandomCharacters(possibleCharacters);
+
+    // push the possibleCharacter to the results array
+    result.push(possibleCharacter);
+  }
+
+  console.log(result);
+  return result;
+}
+
+function writePassword() {
+  // the password is set to the returned result array from generatePassword
+  const password = generatePassword();
+
+  // set the selected DOM passwordDisplay
+  const passwordText = passwordDisplay;
+
+  // show the password in the password display box
+  passwordText.value = password;
+}
+
+function copyToClipboard() {
+  let passwordText = passwordDisplay;
+
+  passwordText.select();
+  document.execCommand("copy");
+
+  alert(`Your password ${passwordText.value} was copied to your clipboard`);
+}
+
+// event listener on the range slider
+slider.addEventListener("input", syncCharacters);
+
+// event listener on the number value
+sliderNumber.addEventListener("input", syncCharacters);
 
 // event listener for the options form
 optionsForm.addEventListener("submit", (event) => {
   event.preventDefault();
 });
 
-// event listener on the range slider
-slider.addEventListener("input", () => {
-  // change the value of the number value by the slider value
-  sliderNumber.value = slider.value;
+// event listners for the generate buttons
+generateButton.addEventListener("click", writePassword);
+generate.addEventListener("click", writePassword);
+
+// event listener for the copy buttons
+copyButton.addEventListener("click", copyToClipboard);
+copy.addEventListener("click", copyToClipboard);
+
+displayForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 });
-
-// event listener on the number value
-sliderNumber.addEventListener("input", () => {
-  console.log(`Slider value is: ${slider.value}`);
-  console.log(`Number value is: ${sliderNumber.value}`);
-  // change the value of the slider value by the number value
-  slider.value = sliderNumber.value;
-});
-
-// Create user-slected criteria
-// var userInput = parseInt(
-//   prompt("How many characters would you like your password to contain?")
-// );
-
-// // confirm boxes
-// var lowercase = confirm('Click OK to confirm using lowercase characters');
-// var uppercase = confirm('Click OK to confirm using uppercase characters');
-// var numbers = confirm('Click OK to confirm using numbers');
-// var special = confirm('Click OK to confirm using special characters');
-
-function userLength() {
-  // Conditional statement to check if password length is a number. Prompts end if this evaluates false
-  if (isNaN(userInput) === true) {
-    alert("Password length must be provided as a number");
-    return;
-  }
-
-  // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
-  if (userInput < 8) {
-    alert("Password length must be at least 8 characters");
-    return;
-  }
-
-  // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
-  if (userInput > 128) {
-    alert("Password length must less than 129 characters");
-    return;
-  }
-
-  if (lowercase) {
-    combinedCharacters += lowerCharacters;
-  }
-  if (uppercase) {
-    combinedCharacters += upperCharacters;
-  }
-  if (numbers) {
-    combinedCharacters += numericCharacters;
-  }
-  if (special) {
-    combinedCharacters += specialCharacters;
-  }
-
-  // Conditional statement to check if user does not include any types of characters. Password generator ends if all four variables evaluate to false
-  if (
-    lowerCharacters === false &&
-    upperCharacters === false &&
-    numericCharacters === false &&
-    specialCharacters === false
-  ) {
-    alert("Must select at least one character type");
-    return;
-  }
-}
-
-// Generate random letters from array
-function randomLetter(arr) {
-  let letter = arr[Math.floor(Math.random() * arr.length)];
-  return letter;
-}
-
-// Loop through array
-function generate(arr) {
-  userLength();
-  var password = " ";
-  for (var i = 0; i < userInput; i++) {
-    password += randomLetter(arr);
-  }
-  return password;
-}
-
-// Grab reference to textarea ID
-var box = document.getElementById("passTextBox");
-
-// Fire an on click event when the button is clicked and set the textContent to the generated password
-generateBtn.onclick = function () {
-  var pass = generate(combinedCharacters);
-  box.textContent = pass;
-};
-
-// Copy to clipboard event
-document.querySelector("#copyBtn").addEventListener("click", function () {
-  document.querySelector("#passTextBox").select();
-  document.execCommand("copy");
-});
-
-// started with declaring arrays to pull information from
-// build the function to prompt user for input
-// prompt
