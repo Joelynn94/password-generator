@@ -109,9 +109,6 @@ const upperCasedCharacters = [
   "Z",
 ];
 
-let hasUppercase = checkboxUppercase.checked;
-hasUppercase = true;
-
 // sync the range slider and number values together
 function syncCharacters(event) {
   // set the value to get the event.target.value that was dispatched
@@ -143,8 +140,6 @@ function getPasswordOptions() {
     hasNumber,
     hasSymbols
   );
-
-  hasUppercase = true;
 
   if (
     hasUppercase == false &&
@@ -243,16 +238,23 @@ function copyToClipboard() {
   alert(`Your password ${passwordText.value} was copied to your clipboard`);
 }
 
-// event listener on the range slider
-slider.addEventListener("input", syncCharacters);
-
-// event listener on the number value
-sliderNumber.addEventListener("input", syncCharacters);
-
 // event listener for the options form
 optionsForm.addEventListener("submit", (event) => {
   event.preventDefault();
 });
+
+// event listener for the display form
+displayForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
+// event listener on the range slider
+slider.addEventListener("input", syncCharacters);
+slider.addEventListener("input", writePassword);
+
+// event listener on the number value
+sliderNumber.addEventListener("input", syncCharacters);
+sliderNumber.addEventListener("input", writePassword);
 
 // event listners for the generate buttons
 generateButton.addEventListener("click", writePassword);
@@ -261,7 +263,3 @@ generate.addEventListener("click", writePassword);
 // event listener for the copy buttons
 copyButton.addEventListener("click", copyToClipboard);
 copy.addEventListener("click", copyToClipboard);
-
-displayForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-});
