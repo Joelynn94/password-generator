@@ -28,7 +28,6 @@ const specialCharacters = [
   "@",
   "%",
   "+",
-  "\\",
   "/",
   "'",
   "!",
@@ -37,7 +36,6 @@ const specialCharacters = [
   "^",
   "?",
   ":",
-  ",",
   ")",
   "(",
   "}",
@@ -277,7 +275,9 @@ function generatePassword() {
   }
 
   console.log(result);
-  return result;
+  // join the array with a blank string
+  // otherwise by default the password will have commas seperating each value
+  return result.join("");
 }
 
 function writePassword() {
