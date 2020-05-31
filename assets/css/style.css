@@ -93,10 +93,6 @@ body {
   transform: translateY(-50%);
 }
 
-.password-generator_input:focus {
-  border: 2px solid #ff554f !important;
-}
-
 .password-display {
   display: flex;
   margin: 0 auto;
