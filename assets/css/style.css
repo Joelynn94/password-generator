@@ -80,8 +80,8 @@ body {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 100%;
-  max-width: 100%;
+  width: 85%;
+  max-width: 85%;
   height: 50px;
   padding-right: 108px;
   padding-left: 44px;
@@ -101,13 +101,13 @@ body {
 }
 
 .password-generator_icons {
+  display: flex;
   flex-shrink: 0;
-  padding: 4px 0;
+  padding: 5px;
   position: absolute;
   top: 50%;
-  right: 30px;
-  width: 76px;
-  height: 32px;
+  right: 20px;
+  width: 90px;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
@@ -123,9 +123,10 @@ body {
 .password-generator_copy,
 .password-generator_generate {
   cursor: pointer;
-  width: 32px;
   border: 0;
   background-color: #fff;
+  padding: 10px;
+  margin-right: 5px;
 }
 
 .password-generator_strength-wrapper {
