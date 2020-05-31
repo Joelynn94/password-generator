@@ -394,10 +394,6 @@ body {
   bottom: 0;
 }
 
-.modal-container.show-modal {
-  display: block;
-}
-
 .modal {
   background-color: #fff;
   border-radius: 5px;
@@ -407,12 +403,18 @@ body {
   top: 50%;
   left: 50%;
   max-width: 100%;
-  width: 500px;
+  width: 80%;
   /* Puts the modal box in the middle */
   transform: translate(-50%, -50%);
   /* Animates - keyframes are added at the bottom of this page*/
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
+}
+
+@media only screen and (min-width: 860px) {
+  .modal {
+    max-width: 800px;
+  }
 }
 
 .modal-header {
