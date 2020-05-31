@@ -1,28 +1,6 @@
 // Validate user input and ensure that at least one character type is selected.
 // Once all prompts are answered, the user will be presented with a password matching the answered prompts. Displaying the generated password in an alert is acceptable, but attempt to write the password to the page instead.
 
-// DOM Elements
-const slider = document.getElementById("range-slider");
-const sliderNumber = document.getElementById("range-number");
-const passwordDisplay = document.getElementById("password-display");
-const passwordStrength = document.getElementById("passwordStrength");
-// Forms
-const optionsForm = document.getElementById("options-form");
-const displayForm = document.getElementById("display-form");
-// Checkboxes
-const checkboxUppercase = document.getElementById("checkbox-uppercase");
-const checkboxLowercase = document.getElementById("checkbox-lowercase");
-const checkboxNumbers = document.getElementById("checkbox-numbers");
-const checkboxSymbols = document.getElementById("checkbox-symbols");
-// Buttons
-const copy = document.getElementById("copy");
-const generate = document.getElementById("generate");
-const copyButton = document.getElementById("copy-btn");
-const generateButton = document.getElementById("generate-btn");
-const closeButton = document.getElementById("close");
-// Alerts/toasts
-const toastMessage = document.querySelector(".info-toast");
-
 // Array of special characters to be included in password
 const specialCharacters = [
   "@",
@@ -111,6 +89,31 @@ const upperCasedCharacters = [
   "Z",
 ];
 
+// DOM Elements
+const slider = document.getElementById("range-slider");
+const sliderNumber = document.getElementById("range-number");
+const passwordDisplay = document.getElementById("password-display");
+const passwordStrength = document.getElementById("passwordStrength");
+const modal = document.getElementById("modal");
+const modalText = document.getElementById("modalText");
+// Forms
+const optionsForm = document.getElementById("options-form");
+const displayForm = document.getElementById("display-form");
+// Checkboxes
+const checkboxUppercase = document.getElementById("checkbox-uppercase");
+const checkboxLowercase = document.getElementById("checkbox-lowercase");
+const checkboxNumbers = document.getElementById("checkbox-numbers");
+const checkboxSymbols = document.getElementById("checkbox-symbols");
+// Buttons
+const copy = document.getElementById("copy");
+const generate = document.getElementById("generate");
+const copyButton = document.getElementById("copy-btn");
+const generateButton = document.getElementById("generate-btn");
+const closeButton = document.getElementById("close");
+const closeModal = document.getElementById("closeModal");
+// Alerts/toasts
+const toastMessage = document.querySelector(".info-toast");
+
 // sync the range slider and number values together
 function syncCharacters(event) {
   // set the value to get the event.target.value that was dispatched
@@ -150,6 +153,7 @@ function infoToastMessage() {
   }, 1000);
 }
 
+// function to get the password options values
 function getPasswordOptions() {
   // check to see password options
   // check the character amount
@@ -232,6 +236,7 @@ function getRandomCharacters(array) {
   return randomCharacter;
 }
 
+// function to generate the password using the characters arrays
 function generatePassword() {
   // calling the getPasswordOptions function to get the passwordOptions object
   const options = getPasswordOptions();
@@ -280,6 +285,7 @@ function generatePassword() {
   return result.join("");
 }
 
+// function to write password to the DOM
 function writePassword() {
   // the password is set to the returned result array from generatePassword
   const password = generatePassword();
@@ -289,15 +295,65 @@ function writePassword() {
 
   // show the password in the password display box
   passwordText.value = password;
+
+  return password;
 }
 
+// function to open and close the cpoied modal
+function copiedModal() {
+  const password = writePassword();
+  // how many seconds to display
+  let secondsLeft = 5;
+  // interval function set to messageTime
+  const messageTime = setInterval(function () {
+    // display the modal message div
+    modal.style.display = "block";
+    //
+    modalText.innerHTML = `Your password ${password} was cpoied to your clipboard.`;
+    // decrease the secondsLeft every second
+    secondsLeft--;
+
+    // when the timer reaches zero
+    if (secondsLeft == 0) {
+      // hide the modal message div
+      modal.style.display = "none";
+      // clear the interval
+      clearInterval(messageTime);
+    }
+
+    // listen to the close button being clicked
+    closeModal.addEventListener("click", () => {
+      // set the modal message div to display none
+      modal.style.display = "none";
+      // and clear the interval
+      clearInterval(messageTime);
+    });
+
+    // listen to the click outside of the modal being clicked
+    window.addEventListener("click", (event) => {
+      // the dark area seen is all the id of modal
+      // if the click happened on the modal id
+      if (event.target === modal) {
+        // set the modal message div to display none
+        modal.style.display = "none";
+        // clear the interval
+        clearInterval(messageTime);
+      }
+    });
+  }, 1000);
+}
+
+// function to copy the password to clipboard
 function copyToClipboard() {
+  // set the passwordDisplay input to a variable
   let passwordText = passwordDisplay;
 
+  // select the passwordText
   passwordText.select();
+  // using the clipboard API to copy the text
   document.execCommand("copy");
 
-  alert(`Your password ${passwordText.value} was copied to your clipboard`);
+  copiedModal();
 }
 
 // event listener for the options form

@@ -375,9 +375,58 @@ body {
   }
 }
 
-/* form {
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-container.show-modal {
+  display: block;
+}
+
+.modal {
   background-color: #fff;
-  color: #3c4a55;
-  box-shadow: 0px 8px 15px 0px #6c757d;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  max-width: 100%;
+  width: 500px;
+  /* Puts the modal box in the middle */
+  transform: translate(-50%, -50%);
+  /* Animates - keyframes are added at the bottom of this page*/
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.modal-header {
+  background-color: #ff554f;
+  color: #fff;
   padding: 1rem;
-} */
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.modal-content {
+  padding: 1.5rem;
+}
+
+.close-btn {
+  background: transparent;
+  font-size: 25px;
+  position: absolute;
+  top: 14px;
+  right: 15px;
+  color: #fff;
+  border: 0;
+  outline: none;
+}
