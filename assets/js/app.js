@@ -309,7 +309,7 @@ function copiedModal() {
     // display the modal message div
     modal.style.display = "block";
     //
-    modalText.innerHTML = `Your password ${password} was cpoied to your clipboard.`;
+    modalText.innerHTML = `Your password ${password} was copied to your clipboard.`;
     // decrease the secondsLeft every second
     secondsLeft--;
 
