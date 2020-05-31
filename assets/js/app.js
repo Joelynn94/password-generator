@@ -176,7 +176,7 @@ function getPasswordOptions() {
     hasSymbols
   );
 
-  // if no options are sleected - return
+  // if no options are selected - return an alert
   if (
     hasUppercase == false &&
     hasLowercase == false &&
