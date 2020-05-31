@@ -80,8 +80,8 @@ body {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 85%;
-  max-width: 85%;
+  width: 65%;
+  max-width: 65%;
   height: 50px;
   padding-right: 108px;
   padding-left: 44px;
@@ -91,6 +91,20 @@ body {
   text-align: left;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+@media only screen and (min-width: 500px) {
+  .password-generator_input {
+    width: 75%;
+    max-width: 75%;
+  }
+}
+
+@media only screen and (min-width: 680px) {
+  .password-generator_input {
+    width: 85%;
+    max-width: 85%;
+  }
 }
 
 .password-display {
