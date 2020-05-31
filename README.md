@@ -13,7 +13,7 @@ Build a password generator application that allows the user to select a password
 
 This is what the old version of the application looked like from when I was in coding bootcamp. I decided to redo this application with a a better looking interface with more features. 
 
-[Old password generator](assets/screenshots/old-password-generator.PNG)
+[Old password generator](./assets/screenshots/old-password-generator.PNG)
 
 ## App demo 
 This application was built with no frameworks - only pure html, css and javascript. 
