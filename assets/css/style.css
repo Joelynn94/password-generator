@@ -400,7 +400,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   position: absolute;
   overflow: hidden;
-  top: 50%;
+  top: 25%;
   left: 50%;
   max-width: 800px;
   width: 80%;
