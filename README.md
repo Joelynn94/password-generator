@@ -17,6 +17,7 @@ This is what the old version of the application looked like from when I was in c
 
 ## App demo 
 This application was built with no frameworks - only pure html, css and javascript. 
+![Gif app demo](password-generator.gif)
 
 ### New and improved interface 
 ![New password generator](screenshots/new-password-generator.PNG)
